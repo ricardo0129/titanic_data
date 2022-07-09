@@ -5,8 +5,8 @@ import math
 path = './train.csv'
 titanic_data = pd.read_csv(path)
 titanic_data["Sex"] = np.where(titanic_data["Sex"] == "female", 1, 0)
-titanic_data.loc[titanic_data["Fare"] == np.nan, "Fare"] = round(random.uniform(0,50),2)
-titanic_data.loc[titanic_data["Age"] == np.nan, "Age"] = round(random.uniform(16,32),2)
+titanic_data['Age'] = titanic_data['Age'].fillna(round(random.uniform(16,32),2))
+titanic_data['Fare'] = titanic_data['Fare'].fillna(round(random.uniform(0,50),2))
 titanic_data.to_csv("train_better.csv",index=False)
 
 path = './test.csv'
